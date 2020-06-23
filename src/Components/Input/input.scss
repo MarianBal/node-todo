@@ -1,0 +1,12 @@
+@import './../../resources/colors.scss';
+@import './../../resources/mixin.scss';
+
+.form-container {
+  width: 40%;
+  margin-top: 5vh;
+  @include flexbox(row, center, center);
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid $primary-color-dark !important;
+}
