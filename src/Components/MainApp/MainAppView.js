@@ -1,5 +1,15 @@
 import React from 'react';
 
-const MainAppview = () => <h1>Hola</h1>;
+import './mainApp.scss';
+
+const MainAppview = ({ notes }) => {
+  return (
+    <div className="container">
+      <div>
+        {notes.length ? notes.map((note) => <h1>{note.toDo}</h1>) : null}
+      </div>
+    </div>
+  );
+};
 
 export default MainAppview;
