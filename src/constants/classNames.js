@@ -7,6 +7,7 @@ export const classNames = {
   },
   card: {
     notesContainer: 'notes-container',
-    eachNote: 'each-note'
+    eachNote: 'each-note',
+    close: 'close'
   }
 };
