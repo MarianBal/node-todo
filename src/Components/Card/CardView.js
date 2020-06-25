@@ -4,14 +4,18 @@ import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/translations';
 import './card.scss';
 
-const CardView = ({ notes }) => {
+const CardView = ({ notes, deleteNote }) => {
   const { notesContainer, eachNote, close } = classNames.card;
   return (
     <div className={notesContainer}>
       {notes.length
         ? notes.map(note => (
             <div className={eachNote} key={note.data}>
-              <div className={close}>{translations.card.x}</div>
+              <div className={close}>
+                <span onClick={() => deleteNote(note._id)}>
+                  {translations.card.x}
+                </span>
+              </div>
               {note.data}
             </div>
           ))

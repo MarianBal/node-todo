@@ -1,4 +1,4 @@
-import { getNotes, postAddNote } from './../../Utils/call';
+import { getNotes, postAddNote, deleteANote } from './../../Utils/call';
 
 export const notesData = async setter => {
   const response = await getNotes();
@@ -17,3 +17,5 @@ const callAddNote = async (data, setter, setNewNote) => {
     setNewNote('');
   }
 };
+
+export const deleteNote = () => id => console.log(id);

@@ -56,48 +56,27 @@ app.post('/', (req, res) => {
           res.status(400);
         }
         res.status(200);
-        res.json(notes);
-        return;
+        return res.json(notes);
       });
     }
   });
 });
 
-// app.delete('/:userId', (req, res) => {
-//   const id = req.params.userId;
+app.delete('/:noteId', (req, res) => {
+  Notes.findOneAndRemove(
+    { _id: req.params.noteId },
+    { new: true },
+    (err, note) => {
+      if (err) return console.error(err);
+      res.status(200);
 
-//   const removeUser = async () => {
-//     const response = await User.remove({ _id: id });
-//     return response.deletedCount;
-//   };
-
-//   removeUser();
-
-//   User.find(function (err, users) {
-//     if (err) return console.error(err);
-//     return res.json(users);
-//   });
-// });
-
-// app.put('/:userId/edit', (req, res) => {
-//   const id = req.params.userId;
-//   console.log(req.body);
-
-//   const editUser = async () => {
-//     let response = await User.findOneAndUpdate({ _id: id }, req.body, {
-//       new: true
-//     });
-//     await response.save();
-//     return response;
-//   };
-//   editUser();
-
-//   User.find(function (err, users) {
-//     if (err) return console.error(err);
-//     console.log(users);
-//     return res.json(users);
-//   });
-// });
+      Notes.find((err, notes) => {
+        if (err) return console.error(err);
+        return res.json(notes);
+      });
+    }
+  );
+});
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)

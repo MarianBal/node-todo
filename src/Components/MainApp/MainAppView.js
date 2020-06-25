@@ -5,7 +5,13 @@ import Input from './../Input';
 import Card from './../Card';
 import { classNames } from './../../constants/classNames';
 
-const MainAppView = ({ notes, handleNewNote, addToDo, newNote }) => {
+const MainAppView = ({
+  notes,
+  handleNewNote,
+  addToDo,
+  newNote,
+  deleteNote
+}) => {
   return (
     <div className={classNames.mainApp.mainContainer}>
       <Input
@@ -13,7 +19,7 @@ const MainAppView = ({ notes, handleNewNote, addToDo, newNote }) => {
         addToDo={addToDo}
         newNote={newNote}
       />
-      <Card notes={notes} />
+      <Card notes={notes} deleteNote={deleteNote} />
     </div>
   );
 };

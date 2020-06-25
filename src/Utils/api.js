@@ -1,7 +1,7 @@
 import {
   getSettings,
-  postSettings
-  //deleteSettings,
+  postSettings,
+  deleteSettings
   //putSettings
 } from './fetchSettings';
 import { endpoints, url } from './../constants/enums/url';
@@ -20,4 +20,8 @@ export const getAllNotes = () => () => {
 
 export const addSingleNote = data => () => {
   return fetch(nodeApi(init), postSettings(data));
+};
+
+export const deleteSingleNote = id => () => {
+  return fetch(nodeApi(`${init}${id}`), deleteSettings());
 };

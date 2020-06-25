@@ -22,9 +22,13 @@
       font-size: 21px;
       font-weight: 700;
       text-shadow: 1px 1px 1px $primary-color-dark;
-      cursor: pointer;
+
       display: flex;
       justify-content: flex-end;
+
+      span {
+        cursor: pointer;
+      }
     }
   }
 }
