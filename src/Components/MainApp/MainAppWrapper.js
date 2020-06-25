@@ -11,12 +11,12 @@ const MainAppWrapper = () => {
   useEffect(() => {
     notesData(setNotes);
   }, []);
-  console.log('notes:', notes);
+
   return (
     <MainAppView
       notes={notes}
       handleNewNote={handleEvent(setNewNote)}
-      addToDo={addToDo(newNote, setNotes)}
+      addToDo={addToDo(newNote, setNotes, setNewNote)}
       newNote={newNote}
     />
   );

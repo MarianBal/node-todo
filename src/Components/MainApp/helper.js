@@ -5,12 +5,15 @@ export const notesData = async setter => {
   if (response.data) setter(response.data);
 };
 
-export const addToDo = (note, setter) => e => {
-  e.charCode === 13 && callAddNote({ data: note }, setter);
+export const addToDo = (note, setter, setNewNote) => e => {
+  e.charCode === 13 && callAddNote({ data: note }, setter, setNewNote);
 };
 
-const callAddNote = async (data, setter) => {
+const callAddNote = async (data, setter, setNewNote) => {
   const response = await postAddNote(data);
   console.log(response.data);
-  if (response.data) setter(response.data);
+  if (response.data) {
+    setter(response.data);
+    setNewNote('');
+  }
 };
