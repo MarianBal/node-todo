@@ -10,9 +10,9 @@ const CardView = ({ notes }) => {
     <div className={notesContainer}>
       {notes.length
         ? notes.map(note => (
-            <div className={eachNote} key={note.toDo}>
+            <div className={eachNote} key={note.data}>
               <div className={close}>{translations.card.x}</div>
-              {note.toDo}
+              {note.data}
             </div>
           ))
         : null}

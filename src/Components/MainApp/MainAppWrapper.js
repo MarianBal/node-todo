@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import MainAppView from './MainAppView';
-import { notesData } from './helper';
+import { notesData, addToDo } from './helper';
 import { handleEvent } from './../../Utils/handleSetters';
 
 const MainAppWrapper = () => {
@@ -11,9 +11,15 @@ const MainAppWrapper = () => {
   useEffect(() => {
     notesData(setNotes);
   }, []);
-
-  console.log(newNote);
-  return <MainAppView notes={notes} handleNewNote={handleEvent(setNewNote)} />;
+  console.log('notes:', notes);
+  return (
+    <MainAppView
+      notes={notes}
+      handleNewNote={handleEvent(setNewNote)}
+      addToDo={addToDo(newNote, setNotes)}
+      newNote={newNote}
+    />
+  );
 };
 
 export default MainAppWrapper;
