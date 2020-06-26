@@ -18,7 +18,7 @@ const MainAppWrapper = () => {
       handleNewNote={handleEvent(setNewNote)}
       addToDo={addToDo(newNote, setNotes, setNewNote)}
       newNote={newNote}
-      deleteNote={deleteNote()}
+      deleteNote={deleteNote(setNotes)}
     />
   );
 };

@@ -11,11 +11,15 @@ export const addToDo = (note, setter, setNewNote) => e => {
 
 const callAddNote = async (data, setter, setNewNote) => {
   const response = await postAddNote(data);
-  console.log(response.data);
   if (response.data) {
     setter(response.data);
     setNewNote('');
   }
 };
 
-export const deleteNote = () => id => console.log(id);
+export const deleteNote = setNotes => id => deleteSingleNote(id, setNotes);
+
+const deleteSingleNote = async (id, setNotes) => {
+  const response = await deleteANote(id);
+  if (response.data) setNotes(response.data);
+};
