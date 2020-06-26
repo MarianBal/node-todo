@@ -18,7 +18,12 @@ db.once('open', () => {
   console.log('Im connected');
 });
 
-const notesSchema = new mongoose.Schema({ data: String });
+const notesSchema = new mongoose.Schema({
+  data: {
+    type: String,
+    unique: [true, 'Nota repetida']
+  }
+});
 
 notesSchema.methods.remember = function () {
   const remember = 'Dont forget to ' + this.data;
@@ -44,11 +49,6 @@ app.post('/', (req, res) => {
 
   newNotes.save(function (err, notes) {
     if (err) {
-      console.error(err);
-      for (let key in err.errors) {
-        let error = err.errors[key];
-        console.log(error);
-      }
       res.status(400).json(err);
       return;
     } else {

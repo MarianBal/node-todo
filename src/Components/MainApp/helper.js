@@ -11,7 +11,10 @@ export const addToDo = (note, setter, setNewNote) => e => {
 
 const callAddNote = async (data, setter, setNewNote) => {
   const response = await postAddNote(data);
-  if (response.data) {
+  if (response.errorNumber) {
+    console.log('nota repetida');
+    setNewNote('');
+  } else if (response.data) {
     setter(response.data);
     setNewNote('');
   }
